@@ -228,7 +228,7 @@
         </section>
 
         <div class="install-button-container">
-            <a href="SkyeMovie.mobileconfig" class="ios-install-button" id="installButton" download>
+            <a href="/SkyeMovie.mobileconfig" class="ios-install-button" id="installButton" download>
                 Install iOS Beta
             </a>
         </div>
@@ -251,13 +251,11 @@
 
         const installButton = document.getElementById('installButton');
         if (installButton) {
-            installButton.addEventListener('click', function() {
+            installButton.addEventListener('click', function(event) {
                 // This log is for developer feedback, not visible to typical users.
-                console.log('User initiated SkyeMovie.mobileconfig download.');
-                // You could add analytics tracking here, e.g.:
-                // if (typeof gtag === 'function') {
-                //     gtag('event', 'beta_install_click', { 'app_name': 'Skye Movie' });
-                // }
+                console.log('User initiated SkyeMovie.mobileconfig download via button.');
+                console.log('Resolved link:', event.target.href); // Log the actual URL the browser will try to use
+                // You could add analytics tracking here
             });
         }
     </script>

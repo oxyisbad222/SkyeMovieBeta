@@ -219,7 +219,7 @@
             <p><strong>To install the Skye Movie Beta on your iOS device:</strong></p>
             <ol>
                 <li>Tap the "Install iOS Beta" button below.</li>
-                <li>Your device will ask: "This website is trying to download a configuration profile. Do you want to allow this?" Tap <strong>Allow</strong>.</li>
+                <li>Your device will ask: "This website is trying to download a configuration profile. Do you want to allow this?" Tap <strong>Allow</strong>. (This prompt will appear after the redirect to the .mobileconfig file)</li>
                 <li>Open the <strong>Settings</strong> app on your device.</li>
                 <li>Near the top, you should see a "Profile Downloaded" item. Tap it.</li>
                 <li>Tap "Install" in the top-right corner, and follow the on-screen prompts (you may need to enter your device passcode).</li>
@@ -228,7 +228,7 @@
         </section>
 
         <div class="install-button-container">
-            <a href="/SkyeMovie.mobileconfig" class="ios-install-button" id="installButton" download>
+            <a href="https://skyebeta.vercel.app/skyemovie.mobileconfig" class="ios-install-button" id="installButton" download="SkyeMovie.mobileconfig">
                 Install iOS Beta
             </a>
         </div>
@@ -245,17 +245,12 @@
         // Set the current year in the footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Optional: Add any client-side interactions or analytics here.
-        // For the .mobileconfig download, the direct <a> link with the 'download' attribute
-        // is the primary mechanism.
-
         const installButton = document.getElementById('installButton');
         if (installButton) {
             installButton.addEventListener('click', function(event) {
                 // This log is for developer feedback, not visible to typical users.
-                console.log('User initiated SkyeMovie.mobileconfig download via button.');
-                console.log('Resolved link:', event.target.href); // Log the actual URL the browser will try to use
-                // You could add analytics tracking here
+                console.log('User clicked install button. Redirecting to:', event.target.href);
+                // No need to prevent default, as we want the browser to navigate.
             });
         }
     </script>

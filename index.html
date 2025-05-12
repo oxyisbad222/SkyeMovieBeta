@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skye Movie - Beta Program</title>
+    <style>
+        /*
+          Skye Movie Beta Website Styles
+          -------------------------------
+          This stylesheet defines the visual appearance of the Skye Movie beta download page.
+          It uses CSS variables for easy theming and aims for a clean, official look,
+          inspired by iOS design principles.
+        */
+
+        :root {
+            --primary-color: #007AFF; /* Standard iOS Blue for primary actions */
+            --text-color-primary: #1d1d1f; /* Near black for primary text, common in iOS */
+            --text-color-secondary: #6e6e73; /* Lighter gray for secondary text */
+            --background-color: #f5f5f7; /* Light gray background, similar to some iOS system views */
+            --container-background: #ffffff; /* White for content containers */
+            --beta-badge-background: #FF9500; /* iOS Orange for the beta badge */
+            --beta-badge-text: #ffffff;
+            --button-text-color: #ffffff;
+            --separator-color: #d1d1d6; /* Light gray for separators */
+            --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        body {
+            font-family: var(--font-family-system);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color-primary);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 30px; /* Space for footer */
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: var(--container-background);
+            width: 100%;
+            max-width: 680px; /* A common width for content on larger screens */
+            margin: 20px auto;
+            padding: 25px 30px; /* More padding for a spacious feel */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softer shadow */
+            border-radius: 18px; /* More pronounced rounding, iOS-like */
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 700px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+                border-radius: 16px;
+            }
+            body {
+                padding-bottom: 15px;
+            }
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column; /* Stack icon and title vertically for focus */
+            align-items: center; /* This centers items horizontally in a column flex container */
+            justify-content: flex-start; /* Align content to the start (top) of the flex container */
+            margin-bottom: 25px;
+            padding-top: 10px; /* Add some padding at the top of the header */
+        }
+
+        .app-icon {
+            width: 80px; /* Original width, can be adjusted if a new icon is added */
+            height: 0;   /* Collapsed height as icon is visually removed */
+            margin-bottom: 0; /* Collapsed margin */
+            /* Icon removed as per request. You can add a new one here if needed. */
+            /* Example: background-image: url('your-new-icon.svg'); height: 80px; margin-bottom: 15px; */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .title-beta-wrapper {
+            display: flex;
+            align-items: baseline; /* Align title and beta badge nicely */
+            justify-content: center;
+            gap: 8px; /* Space between title and beta badge */
+            margin-top: 0; /* Ensure it's at the top if app-icon is collapsed */
+        }
+
+        .app-title {
+            font-size: 2.2em; /* Larger title for emphasis */
+            font-weight: 600;
+            color: var(--text-color-primary);
+            margin: 0;
+        }
+
+        .beta-badge {
+            background-color: var(--beta-badge-background);
+            color: var(--beta-badge-text);
+            font-size: 0.45em; /* Relative to app-title */
+            padding: 5px 10px;
+            border-radius: 7px;
+            font-weight: 600; /* Bold beta text */
+            text-transform: uppercase;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle; /* Better alignment with text */
+        }
+
+        .description {
+            font-size: 1em; /* Standard readable size */
+            color: var(--text-color-primary);
+            margin-bottom: 30px;
+            text-align: left; /* Better for reading paragraphs */
+            padding: 0 15px; /* Slight inset for description */
+        }
+
+        .description p, .description ol {
+            margin-bottom: 15px;
+        }
+
+        .description strong {
+            font-weight: 600;
+            color: var(--text-color-primary);
+        }
+
+        .description ol {
+            padding-left: 25px; /* Indent list items */
+        }
+        .description li {
+            margin-bottom: 8px; /* Space between list items */
+        }
+
+        .install-button-container {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .ios-install-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--button-text-color);
+            padding: 16px 35px; /* Larger, more tappable button */
+            text-decoration: none;
+            font-size: 1.15em; /* Slightly larger button text */
+            font-weight: 500;
+            border-radius: 12px; /* iOS-style button rounding */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.25); /* Subtle shadow for depth */
+        }
+
+        .ios-install-button:hover,
+        .ios-install-button:focus {
+            background-color: #0062cc; /* Slightly darker blue on hover/focus */
+            outline: none; /* Remove default outline */
+        }
+
+        .ios-install-button:active {
+            transform: scale(0.97); /* Slight shrink effect on tap */
+            background-color: #0052aa; /* Even darker for active state */
+        }
+
+        .footer-note {
+            font-size: 0.85em; /* Base size for footer text */
+            color: var(--text-color-secondary);
+            margin-top: 30px;
+        }
+
+        .footer-note a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for the Telegram link paragraph */
+        .footer-telegram-link {
+            font-size: 1em; /* Larger than other footer text (1em of body font) */
+            font-weight: 500; /* Slightly bolder */
+            margin-bottom: 10px !important; /* Ensure some space below it */
+        }
+
+
+        hr.separator {
+            border: none;
+            height: 1px;
+            background-color: var(--separator-color);
+            margin: 30px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="app-icon" role="img" aria-label="Skye Movie App Icon (Placeholder)"></div>
+            <div class="title-beta-wrapper">
+                <h1 class="app-title">Skye Movie</h1>
+                <span class="beta-badge">Beta</span>
+            </div>
+        </header>
+
+        <hr class="separator">
+
+        <section class="description">
+            <p><strong>Welcome to the Skye Movie Beta Program!</strong></p>
+            <p>You're one step away from experiencing the cutting-edge features of Skye Movie. Your feedback is crucial as we refine the app for its official launch.</p>
+            <p>This beta version provides early access to our innovative movie discovery tools. Please be aware that you might encounter occasional bugs or features that are still under development. We appreciate your patience and any reports you can provide.</p>
+            
+            <p><strong>To install the Skye Movie Beta on your iOS device:</strong></p>
+            <ol>
+                <li>Tap the "Install iOS Beta" button below.</li>
+                <li>Your device will ask: "This website is trying to download a configuration profile. Do you want to allow this?" Tap <strong>Allow</strong>.</li>
+                <li>Open the <strong>Settings</strong> app on your device.</li>
+                <li>Near the top, you should see a "Profile Downloaded" item. Tap it.</li>
+                <li>Tap "Install" in the top-right corner, and follow the on-screen prompts (you may need to enter your device passcode).</li>
+                <li>Once installed, the Skye Movie beta app icon will appear on your Home Screen.</li>
+            </ol>
+        </section>
+
+        <div class="install-button-container">
+            <a href="SkyeMovie.mobileconfig" class="ios-install-button" id="installButton" download>
+                Install iOS Beta
+            </a>
+        </div>
+
+        <hr class="separator">
+
+        <footer class="footer-note">
+            <p class="footer-telegram-link">Join our <a href="https://t.me/skyemovieupdates" target="_blank" rel="noopener noreferrer">Telegram channel</a> for updates and support.</p>
+            <p>&copy; <span id="currentYear"></span> Skye Movie Inc. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set the current year in the footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Optional: Add any client-side interactions or analytics here.
+        // For the .mobileconfig download, the direct <a> link with the 'download' attribute
+        // is the primary mechanism.
+
+        const installButton = document.getElementById('installButton');
+        if (installButton) {
+            installButton.addEventListener('click', function() {
+                // This log is for developer feedback, not visible to typical users.
+                console.log('User initiated SkyeMovie.mobileconfig download.');
+                // You could add analytics tracking here, e.g.:
+                // if (typeof gtag === 'function') {
+                //     gtag('event', 'beta_install_click', { 'app_name': 'Skye Movie' });
+                // }
+            });
+        }
+    </script>
+</body>
+</html>
